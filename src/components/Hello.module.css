@@ -1,3 +1,6 @@
 .test {
     background-color: palevioletred;
+    height: 50px;
+    font-size: 2em;
+    padding: 10px;
 }
