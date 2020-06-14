@@ -5,14 +5,15 @@ import ForkTsCheckerWebpackPlugin from "fork-ts-checker-webpack-plugin";
 import { CleanWebpackPlugin } from "clean-webpack-plugin";
 import MiniCssExtractPlugin from "mini-css-extract-plugin";
 
-const webpackConfig = (): Configuration => ({
+const webpackConfig = (env: any): Configuration => ({
     entry: path.join(__dirname, "/src/index.tsx"),
     resolve: {
         extensions: [".ts", ".tsx", ".js"]
     },
     output: {
         path: path.resolve(__dirname, 'dist'),
-        filename: '[name].[hash].js'
+        filename: env.development ? 'bundle.js' : '[name].[contenthash:8].js',
+        chunkFilename: env.development ? '[name].chunk.js' : '[name].[contenthash:8].chunk.js'
     },
     module: {
         rules: [
@@ -26,15 +27,20 @@ const webpackConfig = (): Configuration => ({
             },
             {
                 test: /\.css$/,
-                use: [
-                    MiniCssExtractPlugin.loader,
-                    {
-                        loader: 'css-loader',
-                        options: {
-                            importLoaders: 1,
-                            modules: true
-                        }
-                    }
+                oneOf: [
+                  {
+                    test: /\.module\.css$/,
+                    use: [
+                      MiniCssExtractPlugin.loader,
+                      {
+                        loader: "css-loader",
+                        options: { modules: true }
+                      }
+                    ]
+                  },
+                  {
+                    use: [MiniCssExtractPlugin.loader, "css-loader"]
+                  }
                 ]
             },
             {
@@ -60,18 +66,16 @@ const webpackConfig = (): Configuration => ({
             template: path.join(__dirname, "./public/index.html")
         }),
         new ForkTsCheckerWebpackPlugin({ eslint: true }),
-        new MiniCssExtractPlugin()
+        new MiniCssExtractPlugin({
+            filename: env.development ? '[name].css' : '[name].[hash].css',
+            chunkFilename: env.development ? '[id].css' : '[id].[hash].css'
+        })
     ],
     optimization: {
         runtimeChunk: 'single',
         splitChunks: {
-            cacheGroups: {
-                vendor: {
-                    test: /[\\/]node_modules[\\/]/,
-                    name: 'vendors',
-                    chunks: 'all'
-                }
-            }
+            chunks: 'all',
+            name: false,
         }
     }
 });

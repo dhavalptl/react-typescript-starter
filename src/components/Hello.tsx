@@ -1,4 +1,5 @@
 import React from 'react';
+import styles from './Hello.module.css';
 
 interface Props {
     title: string;
@@ -7,7 +8,7 @@ interface Props {
 const Hello: React.FC<Props> = ({ title }) => {
     return (
         <div>
-            <header>Hello {title} !</header>
+            <header className={styles.test}>Hello {title} !</header>
         </div>
     );
 };
