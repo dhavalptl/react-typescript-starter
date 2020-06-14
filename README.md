@@ -1,6 +1,6 @@
 # react-typescript-starter
 
-This is React with Typescript basic setup. Jest and eslint are inbuilt setup in this starter code.
+This is React with Typescript basic setup. Jest, CSS Modules and eslint are inbuilt setup in this starter code.
 
 It helps to setup react and typescript quickly.
 
