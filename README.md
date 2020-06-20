@@ -37,15 +37,3 @@ Test your application
 ```
 npm run test
 ```
-
-Lint you code
-
-```
-npm run lint
-```
-
-Lint error fix
-
-```
-npm run lint:fix
-```

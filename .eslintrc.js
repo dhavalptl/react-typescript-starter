@@ -3,16 +3,13 @@ module.exports = {
         "browser": true
     },
     "extends": [
+        "eslint:recommended",
         "plugin:react/recommended",
         "plugin:react-hooks/recommended",
-        "plugin:@typescript-eslint/recommended",
-        "prettier/@typescript-eslint",
-        "plugin:prettier/recommended"
+        "plugin:@typescript-eslint/recommended"
     ],
     "parser": "@typescript-eslint/parser",
     "parserOptions": {
-        "project": path.resolve(__dirname, './tsconfig.json'),
-        "tsconfigRootDir": __dirname,
         "ecmaFeatures": {
             "jsx": true
         },
@@ -22,8 +19,7 @@ module.exports = {
     "plugins": [
         "react",
         "react-hooks",
-        "@typescript-eslint",
-        "prettier"
+        "@typescript-eslint"
     ],
     "rules": {
         "react-hooks/rules-of-hooks": "error",

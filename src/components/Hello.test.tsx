@@ -4,7 +4,7 @@ import {render, screen} from '@testing-library/react';
 import Hello from './Hello';
 
 test('render title', () => {
-    const headerTitle = 'Hello User !';
+    const headerTitle = 'Welcome to application User !';
     render(<Hello title={'User'}/>);
     expect(screen.getByText(headerTitle)).toBeInTheDocument();
 });

@@ -42,28 +42,16 @@ module.exports = {
                     use: [MiniCssExtractPlugin.loader, "css-loader"]
                   }
                 ]
+            },{
+                test: /\.(svg|png|jpe?g|gif)$/i,
+                loader: 'file-loader'
             },
-            {
-                test: /\.png$/,
-                use: [
-                    {
-                        loader: 'url-loader',
-                        options: {
-                            mimetype: 'image/png'
-                        }
-                    }
-                ]
-            },
-            {
-                test: /\.svg$/,
-                use: 'file-loader'
-            }
         ]
     },
     plugins: [
         new CleanWebpackPlugin(),
         new HtmlWebpackPlugin({
-            template: path.join(__dirname, "./public/index.html")
+            template: path.join(__dirname, "./src/index.html")
         }),
         new ForkTsCheckerWebpackPlugin({ eslint: true })
     ]

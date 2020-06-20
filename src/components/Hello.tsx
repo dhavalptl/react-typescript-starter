@@ -1,14 +1,14 @@
 import React from 'react';
 import styles from './Hello.module.css';
 
-interface Props {
+interface HelloProps {
     title: string;
 }
 
-const Hello: React.FC<Props> = ({ title }) => {
+const Hello: React.FC<HelloProps> = ({ title }: HelloProps) => {
     return (
         <div>
-            <header className={styles.test}>Hello {title} !</header>
+            <header className={styles.test}>Welcome to application {title} !</header>
         </div>
     );
 };
