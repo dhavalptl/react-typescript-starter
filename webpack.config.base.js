@@ -1,7 +1,6 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
@@ -10,7 +9,7 @@ module.exports = {
         extensions: [".ts", ".tsx", ".js"]
     },
     output: {
-        path: path.resolve(__dirname, 'dist')
+        path: path.resolve(__dirname, 'dist/static')
     },
     module: {
         rules: [
@@ -49,10 +48,9 @@ module.exports = {
         ]
     },
     plugins: [
-        new CleanWebpackPlugin(),
         new HtmlWebpackPlugin({
             template: path.join(__dirname, "./src/index.html")
         }),
-        new ForkTsCheckerWebpackPlugin({ eslint: true })
+        new ForkTsCheckerWebpackPlugin({ eslint: true, silent: true })
     ]
 };

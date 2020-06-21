@@ -8,7 +8,7 @@ interface HelloProps {
 const Hello: React.FC<HelloProps> = ({ title }: HelloProps) => {
     return (
         <div>
-            <header className={styles.test}>Welcome to application {title} !</header>
+            <header className={styles.test}>Welcome to app {title} !</header>
         </div>
     );
 };

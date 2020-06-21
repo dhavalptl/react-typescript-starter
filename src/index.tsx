@@ -16,3 +16,8 @@ ReactDOM.render(<App />, document.getElementById('root'));
 //         });
 //     });
 // }
+
+if (process.env.NODE_ENV === 'development' && module.hot) {
+   console.log(process);
+   module.hot.accept();
+}

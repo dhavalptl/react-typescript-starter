@@ -1,6 +1,7 @@
 /// <reference types="node" />
 /// <reference types="react" />
 /// <reference types="react-dom" />
+/// <reference types="webpack-env" />
 
 declare namespace NodeJS {
   interface ProcessEnv {
